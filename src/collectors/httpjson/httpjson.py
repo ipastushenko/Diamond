@@ -39,9 +39,9 @@ class HTTPJSONCollector(diamond.collector.Collector):
                     yield k, v
             else:
                 try:
-                    int(value)
+                    float(value)
                 except ValueError:
-                    value = None
+                    value = 0.0
                 finally:
                     yield ("%s.%s" % (prefix, key), value)
 
