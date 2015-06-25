@@ -66,4 +66,5 @@ class HTTPJSONCollector(diamond.collector.Collector):
             else:
                 for metric_name, metric_value in self._json_to_flat_metrics(
                         "", data):
-                    self.publish(metric_name, metric_value)
+                    if metric_value != None:
+                        self.publish_gauge(metric_name, metric_value, 5)
